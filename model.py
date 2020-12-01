@@ -1,4 +1,5 @@
 import keras
+import tensorflow as tf
 from keras.models import Sequential
 from keras.utils import np_utils
 from keras.preprocessing.image import ImageDataGenerator
@@ -22,6 +23,11 @@ def create_model():
     model.add(Flatten())
     model.add(Dense(64, activation='relu'))
     model.add(Dense(10))
+    # compile model
+    model.compile(optimizer='adam',
+              loss=tf.keras.losses.SparseCategoricalCrossentropy(
+                  from_logits=True),
+              metrics=['accuracy'])
     return model
 
 

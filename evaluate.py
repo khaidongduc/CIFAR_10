@@ -12,10 +12,6 @@ class_names = ['airplane', 'automobile', 'bird', 'cat', 'deer',
 
 x_test, y_test = pickle.load(open("data/test_data", "rb"))
 model = model.create_model()
-model.compile(optimizer='adam',
-              loss=tf.keras.losses.SparseCategoricalCrossentropy(
-                  from_logits=True),
-              metrics=['accuracy'])
 model.load_weights("model/model.h5")
 model.evaluate(x_test, y_test)
 
